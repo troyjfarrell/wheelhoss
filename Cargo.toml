@@ -1,0 +1,19 @@
+[package]
+description = "A library and tool to help package applications for Sandstorm"
+edition = "2018"
+license = "MIT OR Apache-2.0"
+name = "wheelhoss"
+readme = "README.md"
+version = "0.1.0"
+
+[[bin]]
+name = "wheelhoss-fileslist-include-python-source-files"
+path = "src/bin/fileslist-include-python-source-files.rs"
+
+[dependencies]
+fs3 = "0.5"
+
+[dev-dependencies]
+file_diff = "1"
+pretty_assertions = "1"
+tempfile = "3"
