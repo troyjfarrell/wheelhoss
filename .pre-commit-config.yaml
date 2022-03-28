@@ -22,3 +22,7 @@ repos:
     -   id: clippy
     -   id: cargo-check
     -   id: fmt
+-   repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.14
+    hooks:
+    -   id: mdformat
