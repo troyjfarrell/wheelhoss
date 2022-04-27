@@ -1,6 +1,8 @@
 [package]
+categories = ["development-tools::build-utils"]
 description = "A library and tool to help package applications for Sandstorm"
 edition = "2018"
+keywords = ["sandstorm"]
 license = "MIT OR Apache-2.0"
 name = "wheelhoss"
 readme = "README.md"
