@@ -2,7 +2,7 @@
 
 A library and tool to help package applications for [Sandstorm](https://sandstorm.io)
 
-Wheelhoss 0.1.1 has exactly one feature:
+Wheelhoss 0.1.2 has exactly one feature:
 
 - update `sandstorm-files.list` to include Python source files
 

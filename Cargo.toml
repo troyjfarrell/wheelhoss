@@ -6,7 +6,7 @@ keywords = ["sandstorm"]
 license = "MIT OR Apache-2.0"
 name = "wheelhoss"
 readme = "README.md"
-version = "0.1.1"
+version = "0.1.2"
 
 [[bin]]
 name = "wheelhoss-fileslist-include-python-source-files"
