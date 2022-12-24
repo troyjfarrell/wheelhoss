@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated `.pre-commit-config.yaml` format
-- Make clippy happy
+- Renamed "fileslist" to "files list"
+- Made clippy happy
 
 ## [0.1.2] - 2022-04-27
 
