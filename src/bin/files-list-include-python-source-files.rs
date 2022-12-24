@@ -4,20 +4,20 @@ use std::path::Path;
 use std::process;
 
 use wheelhoss::error::Error;
-use wheelhoss::fileslist::FilesList;
+use wheelhoss::files_list::FilesList;
 
-const DEFAULT_FILESLIST_PATH: &str = "./.sandstorm/sandstorm-files.list";
+const DEFAULT_FILES_LIST_PATH: &str = "./.sandstorm/sandstorm-files.list";
 
 fn main() -> Result<(), Error> {
     let mut args = env::args();
     if args.len() < 3 {
         let arg_path = match args.nth(1) {
             Some(path) => path,
-            None => DEFAULT_FILESLIST_PATH.to_string(),
+            None => DEFAULT_FILES_LIST_PATH.to_string(),
         };
         let path = Path::new(&arg_path);
-        let mut fileslist = FilesList::new(path);
-        match fileslist.include_python_source_files() {
+        let mut files_list = FilesList::new(path);
+        match files_list.include_python_source_files() {
             Ok(included) => {
                 println!("{:?}", included);
             }
@@ -42,11 +42,11 @@ fn usage() -> Result<(), Error> {
         },
         None => env!("CARGO_BIN_NAME"),
     };
-    println!("{} [fileslist_path]", file_name);
+    println!("{} [files_list_path]", file_name);
     println!();
     println!(
-        "\tfileslist_path\t\tdefault: \"{}\"",
-        DEFAULT_FILESLIST_PATH
+        "\tfiles_list_path\t\tdefault: \"{}\"",
+        DEFAULT_FILES_LIST_PATH
     );
     Ok(())
 }

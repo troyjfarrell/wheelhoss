@@ -18,7 +18,7 @@ impl<'a> PythonFiles<'a> {
         }
     }
 
-    pub fn touch_files_and_update_fileslists(&self) -> Result<(), Error> {
+    pub fn touch_files_and_update_files_lists(&self) -> Result<(), Error> {
         // For BufReader::lines
         use std::io::BufRead;
         // for OsStr.as_bytes
@@ -95,7 +95,7 @@ impl<'a> PythonFiles<'a> {
                 */
             }
         }
-        // Update the expected fileslist
+        // Update the expected files list
         {
             let file = OpenOptions::new().write(true).open(self.expected_path)?;
             let mut writer = BufWriter::new(&file);
@@ -134,13 +134,13 @@ impl<'a> PythonFiles<'a> {
             writer.flush().unwrap();
         }
         let input_files: Vec<String>;
-        // Read and update the input fileslist
+        // Read and update the input files list
         {
             let file = File::open(self.input_path)?;
             let reader = BufReader::new(&file);
             input_files = reader.lines().map(|line| line.unwrap()).collect();
         }
-        // Update the input fileslist
+        // Update the input files list
         {
             let file = OpenOptions::new().write(true).open(self.input_path)?;
             let mut writer = BufWriter::new(&file);

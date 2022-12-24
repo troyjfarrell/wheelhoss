@@ -1,6 +1,6 @@
 //! FilesList
 //!
-//! `fileslist` helps build and maintain the sandstorm-files.list file
+//! `files_list` helps build and maintain the sandstorm-files.list file
 
 use std::collections::BTreeSet;
 use std::fs::{File, OpenOptions};
@@ -31,13 +31,13 @@ impl FilesList {
         }
     }
 
-    /// Adds Python source files to the fileslist file.
+    /// Adds Python source files to the files list file.
     ///
-    /// `include_python_source_files` reads the fileslist file and identifies Python bytecode
+    /// `include_python_source_files` reads the files list file and identifies Python bytecode
     /// files.  If the corresponding Python source files are present on the filesystem and are not
-    /// listed in the fileslist file, this function adds them to the fileslist file.
+    /// listed in the files list file, this function adds them to the files list file.
     ///
-    /// Leading comments in the fileslist file will be preserved.  All other comments will be lost.
+    /// Leading comments in the files list file will be preserved.  All other comments will be lost.
     pub fn include_python_source_files(&mut self) -> Result<BTreeSet<String>, Error> {
         self.ingest_file()?;
         let added_sources = self.add_missing_python_source_files()?;
@@ -205,28 +205,28 @@ mod tests {
     use test_fixture::Fixture;
     use test_python_files::PythonFiles;
 
-    /// fileslist_include_python_source_files is a complex test for the include_python_source_files
-    /// function.  It copies an "input" fileslist to a temporary directory, copies an "expected"
-    /// fileslist, creates a file system tree to match the "expected" fileslist and updates both
-    /// fileslists to point to the file system tree in the temporary directory.  After all this, it
-    /// runs fileslist_include_python_source_files and verifies that the expected Python source
-    /// files are included in the "input" fileslist.
+    /// files_list_include_python_source_files is a complex test for the include_python_source_files
+    /// function.  It copies an "input" files list to a temporary directory, copies an "expected"
+    /// files list, creates a file system tree to match the "expected" files list and updates both
+    /// files lists to point to the file system tree in the temporary directory.  After all this, it
+    /// runs files_list_include_python_source_files and verifies that the expected Python source
+    /// files are included in the "input" files list.
     #[test]
-    fn fileslist_include_python_source_files() {
-        let fileslist_input_file = Fixture::copy("fileslist_include_python_source_files.input");
-        let fileslist_expected_file =
-            Fixture::copy("fileslist_include_python_source_files.expected");
+    fn files_list_include_python_source_files() {
+        let files_list_input_file = Fixture::copy("files_list_include_python_source_files.input");
+        let files_list_expected_file =
+            Fixture::copy("files_list_include_python_source_files.expected");
         {
-            let python_files = PythonFiles::new(&fileslist_input_file, &fileslist_expected_file);
-            python_files.touch_files_and_update_fileslists().unwrap();
+            let python_files = PythonFiles::new(&files_list_input_file, &files_list_expected_file);
+            python_files.touch_files_and_update_files_lists().unwrap();
         }
 
-        let mut fileslist = FilesList::new(&fileslist_input_file);
-        fileslist.include_python_source_files().unwrap();
+        let mut files_list = FilesList::new(&files_list_input_file);
+        files_list.include_python_source_files().unwrap();
 
         assert_eq!(
-            FileReader::new(&fileslist_expected_file),
-            FileReader::new(&fileslist_input_file)
+            FileReader::new(&files_list_expected_file),
+            FileReader::new(&files_list_input_file)
         )
     }
 }
