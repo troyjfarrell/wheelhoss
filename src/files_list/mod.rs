@@ -62,7 +62,7 @@ impl FilesList {
             }
         }
         for line in added_sources.iter() {
-            self.listed_files.insert((&line[1..]).to_string());
+            self.listed_files.insert((line[1..]).to_string());
         }
 
         Ok(added_sources)

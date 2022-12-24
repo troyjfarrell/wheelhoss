@@ -12,7 +12,7 @@ pub enum Error {
 
 impl Display for Error {
     fn fmt(&self, f: &mut Formatter) -> Result<(), std::fmt::Error> {
-        match &*self {
+        match self {
             Self::FailedToOpenFile(filename, maybe_error) => {
                 let error = match maybe_error {
                     Some(error) => format!(": {}", error),
